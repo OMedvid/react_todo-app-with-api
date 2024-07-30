@@ -23,11 +23,13 @@ export const Todo: FC<Props> = ({ todo, onDelete, onEdit, idsProccesing }) => {
     isEditing,
   } = useTodo({ onDelete, onEdit, todo });
 
+  const { completed, title, id } = todo;
+
   return (
     <div
       data-cy="Todo"
       className={cn('todo', {
-        completed: todo.completed,
+        completed: completed,
       })}
       key={todo.id}
     >
@@ -36,15 +38,15 @@ export const Todo: FC<Props> = ({ todo, onDelete, onEdit, idsProccesing }) => {
           data-cy="TodoStatus"
           type="checkbox"
           className="todo__status"
-          onChange={() => handleCompleted(!todo.completed)}
-          checked={todo.completed}
+          onChange={() => handleCompleted(!completed)}
+          checked={completed}
         />
       </label>
 
       {isEditing ? (
         <div onKeyUp={({ key }) => key === 'Escape' && setIsEditing(false)}>
           <TodoForm
-            title={todo.title}
+            title={title}
             onSubmit={handleTitleEdit}
             inputRef={inputRef}
           />
@@ -55,7 +57,7 @@ export const Todo: FC<Props> = ({ todo, onDelete, onEdit, idsProccesing }) => {
           className="todo__title"
           onDoubleClick={() => setIsEditing(true)}
         >
-          {todo.title}
+          {title}
         </span>
       )}
 
@@ -73,7 +75,7 @@ export const Todo: FC<Props> = ({ todo, onDelete, onEdit, idsProccesing }) => {
       <div
         data-cy="TodoLoader"
         className={cn('modal overlay', {
-          'is-active': idsProccesing.includes(todo.id),
+          'is-active': idsProccesing.includes(id),
         })}
       >
         <div className="modal-background has-background-white-ter" />

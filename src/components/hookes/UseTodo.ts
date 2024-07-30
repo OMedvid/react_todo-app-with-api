@@ -48,7 +48,6 @@ export const useTodo = (input: InputHook) => {
 
       setIsEditing(false);
     } catch {
-      // eslint-disable-next-line no-console
       inputRef.current?.focus();
     }
   };

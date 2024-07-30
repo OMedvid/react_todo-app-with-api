@@ -245,7 +245,7 @@ export const App: React.FC = () => {
           idsProccesing={idsProccesing}
         />
 
-        {todos.length > 0 && (
+        {!!todos.length && (
           <Footer
             onFilter={setFilter}
             onClear={clearCompletedTodos}
