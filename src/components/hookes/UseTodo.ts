@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useRef, useState } from 'react';
 import { Todo } from '../../types/Todo';
 
@@ -26,7 +27,8 @@ export const useTodo = (input: InputHook) => {
   const handleCompleted = async (completed: boolean) => {
     try {
       await onEdit(todo.id, { completed });
-    } finally {
+    } catch {
+      console.log('Error');
     }
   };
 

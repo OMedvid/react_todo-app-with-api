@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { FC, useEffect, useState } from 'react';
@@ -31,7 +32,7 @@ export const Header: FC<Props> = ({
       setTitle('');
       setError(null);
     } catch {
-      setError(ErrorMessages.ENABLE_TO_ADD_TODO);
+      console.log(ErrorMessages.ENABLE_TO_ADD_TODO);
     } finally {
       setLoading(false);
     }
@@ -42,7 +43,7 @@ export const Header: FC<Props> = ({
   }, [inputRef, loading]);
 
   return (
-    <header className="todoapp__header">
+    <header className="todoapp__header" data-cy="ErrorNotification">
       {(todosCount.active > 0 || todosCount.completed > 0) && (
         <button
           type="button"

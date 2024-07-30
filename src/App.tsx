@@ -50,7 +50,7 @@ export const App: React.FC = () => {
       setTodos(currentTodos => [...currentTodos, createdTodo]);
     } catch {
       setErrorMessage(ErrorMessages.ENABLE_TO_ADD_TODO);
-      throw new Error(ErrorMessages.ENABLE_TO_ADD_TODO);
+      throw new Error();
     } finally {
       setTempTodoTitle(null);
     }
